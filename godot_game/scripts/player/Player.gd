@@ -17,7 +17,7 @@ const PARRY_WINDOW = 0.2
 enum State { IDLE, RUNNING, JUMPING, ATTACKING, HEAVY_ATTACKING, BLOCKING, DODGING, PARRYING, DYING }
 
 var anim_player: AnimationPlayer
-var sprite: Sprite2D
+var visual: CanvasItem
 var collision_shape: CollisionShape2D
 
 var current_state: State = State.IDLE
@@ -42,7 +42,9 @@ var current_gold_dropped: Node2D = null
 
 func _ready() -> void:
 	anim_player = get_node_or_null("AnimationPlayer")
-	sprite = get_node_or_null("Sprite2D")
+	visual = get_node_or_null("ColorRect")
+	if not visual:
+		visual = get_node_or_null("Sprite2D")
 	collision_shape = get_node_or_null("CollisionShape2D")
 
 	input_manager = get_tree().get_first_node_in_group("input_manager")
@@ -132,8 +134,11 @@ func update_state(delta: float) -> void:
 			velocity.x = 0
 
 func update_animation() -> void:
-	if sprite:
-		sprite.flip_h = not facing_right
+	if visual:
+		if visual is Sprite2D:
+			visual.flip_h = not facing_right
+		else:
+			visual.scale.x = 1.0 if facing_right else -1.0
 
 	if not anim_player:
 		return

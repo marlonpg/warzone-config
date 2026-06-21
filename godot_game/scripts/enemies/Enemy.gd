@@ -16,7 +16,7 @@ enum State { IDLE, PATROL, CHASE, ATTACK, HURT, DYING }
 @export var experience_reward: int = 10
 @export var gold_reward: int = 5
 
-var sprite: Sprite2D
+var visual: CanvasItem
 var anim_player: AnimationPlayer
 
 var max_health: float
@@ -27,7 +27,9 @@ var can_attack: bool = true
 var patrol_direction: float = 1.0
 
 func _ready() -> void:
-	sprite = get_node_or_null("Sprite2D")
+	visual = get_node_or_null("ColorRect")
+	if not visual:
+		visual = get_node_or_null("Sprite2D")
 	anim_player = get_node_or_null("AnimationPlayer")
 	max_health = health
 	add_to_group("enemies")
@@ -91,8 +93,11 @@ func update_ai(delta: float) -> void:
 					current_state = State.CHASE
 
 func update_animation() -> void:
-	if sprite:
-		sprite.flip_h = not facing_right
+	if visual:
+		if visual is Sprite2D:
+			visual.flip_h = not facing_right
+		else:
+			visual.scale.x = 1.0 if facing_right else -1.0
 
 	if not anim_player:
 		return

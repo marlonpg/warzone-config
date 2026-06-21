@@ -5,10 +5,12 @@
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color.BLACK
-scale = Vector2(1, 2)
-offset = Vector2(0, -10)
+[node name="ColorRect" type="ColorRect" parent="."]
+color = Color.BLACK
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
