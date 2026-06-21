@@ -10,8 +10,9 @@ var current_slot: int = 0
 var save_data: Dictionary = {}
 
 func _ready() -> void:
-	if not DirAccess.dir_exists_absolute(SAVE_PATH):
-		DirAccess.make_absolute(SAVE_PATH)
+	var save_dir = DirAccess.open(SAVE_PATH)
+	if save_dir == null:
+		DirAccess.make_dir_absolute(SAVE_PATH)
 
 func save_game(slot: int = 0) -> bool:
 	current_slot = slot

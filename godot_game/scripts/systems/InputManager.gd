@@ -35,18 +35,18 @@ func _input(event: InputEvent) -> void:
 					pass
 				KEY_SPACE:
 					jump.emit()
-				KEY_RIGHT_SHIFT:
+				KEY_SHIFT:
 					sprinting = !sprinting
 					sprint_toggled.emit(sprinting)
 				KEY_E:
 					interact.emit()
-				KEY_RIGHT_BRACKET:
+				KEY_BRACKETRIGHT:
 					light_attack.emit()
-				KEY_LEFT_BRACKET:
+				KEY_BRACKETLEFT:
 					heavy_attack.emit()
 				KEY_CTRL:
 					dodge.emit()
-				KEY_SHIFT:
+				KEY_CONTROL:
 					block.emit()
 	elif event is InputEventJoypadButton:
 		if event.pressed:

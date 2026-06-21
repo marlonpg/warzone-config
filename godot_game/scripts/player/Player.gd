@@ -38,7 +38,6 @@ var input_manager: InputManager
 var game_manager: GameManager
 var player_stats: PlayerStats
 
-var dropped_gold_scene = preload("res://scenes/world/DroppedGold.tscn")
 var current_gold_dropped: Node2D = null
 
 func _ready() -> void:
@@ -166,17 +165,33 @@ func heal(amount: float) -> void:
 
 func die() -> void:
 	current_state = State.DYING
-	anim_player.play("die")
+	if anim_player:
+		anim_player.play("die")
 	if game_manager.current_gold > 0:
-		var gold_drop = dropped_gold_scene.instantiate()
-		gold_drop.position = global_position
-		gold_drop.amount = game_manager.current_gold
-		get_parent().add_child(gold_drop)
-		current_gold_dropped = gold_drop
+		create_gold_drop(game_manager.current_gold)
 		game_manager.current_gold = 0
 
 	await get_tree().create_timer(2.0).timeout
 	get_tree().reload_current_scene()
+
+func create_gold_drop(amount: int) -> void:
+	var gold = Node2D.new()
+	gold.position = global_position
+	gold.add_child(Sprite2D.new())
+	get_parent().add_child(gold)
+	current_gold_dropped = gold
+	var area = Area2D.new()
+	var shape = CircleShape2D.new()
+	shape.radius = 15
+	var collision = CollisionShape2D.new()
+	collision.shape = shape
+	area.add_child(collision)
+	gold.add_child(area)
+	area.body_entered.connect(func(body):
+		if body.is_in_group("player"):
+			game_manager.add_gold(amount)
+			gold.queue_free()
+	)
 
 func _on_light_attack() -> void:
 	if current_state in [State.ATTACKING, State.HEAVY_ATTACKING, State.DODGING, State.DYING]:

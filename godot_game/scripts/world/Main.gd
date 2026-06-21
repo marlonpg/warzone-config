@@ -143,14 +143,22 @@ func spawn_enemy(enemy_type: String, pos: Vector2) -> void:
 	match enemy_type:
 		"Slime":
 			enemy = Slime.new()
+			enemy.health = 15.0
+			enemy.attack_damage = 3.0
 		"Rat":
 			enemy = Rat.new()
+			enemy.health = 20.0
+			enemy.attack_damage = 4.0
 		"Goblin":
 			enemy = Goblin.new()
+			enemy.health = 25.0
+			enemy.attack_damage = 5.0
 
 	if enemy:
 		enemy.position = pos
 		add_child(enemy)
+
+		await get_tree().process_frame
 
 		var collision = CollisionShape2D.new()
 		var shape = CircleShape2D.new()
