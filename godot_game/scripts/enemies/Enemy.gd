@@ -97,17 +97,21 @@ func update_animation() -> void:
 	if not anim_player:
 		return
 
+	var anim_name = ""
 	match current_state:
 		State.IDLE:
-			anim_player.play("idle")
+			anim_name = "idle"
 		State.PATROL:
-			anim_player.play("walk")
+			anim_name = "walk"
 		State.CHASE:
-			anim_player.play("walk")
+			anim_name = "walk"
 		State.ATTACK:
-			anim_player.play("attack")
+			anim_name = "attack"
 		State.HURT:
-			anim_player.play("hurt")
+			anim_name = "hurt"
+
+	if anim_name and anim_player.has_animation(anim_name):
+		anim_player.play(anim_name)
 
 func take_damage(damage: float) -> void:
 	health -= damage

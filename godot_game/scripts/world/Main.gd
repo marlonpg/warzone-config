@@ -98,37 +98,10 @@ func create_player() -> void:
 	create_player_animations(anim)
 
 func create_player_animations(anim_player: AnimationPlayer) -> void:
-	var idle = Animation.new()
-	idle.length = 0.5
-	anim_player.add_animation("idle", idle)
-
-	var run = Animation.new()
-	run.length = 0.4
-	anim_player.add_animation("run", run)
-
-	var jump = Animation.new()
-	jump.length = 0.5
-	anim_player.add_animation("jump", jump)
-
-	var attack_light = Animation.new()
-	attack_light.length = 0.5
-	anim_player.add_animation("attack_light", attack_light)
-
-	var attack_heavy = Animation.new()
-	attack_heavy.length = 0.8
-	anim_player.add_animation("attack_heavy", attack_heavy)
-
-	var dodge = Animation.new()
-	dodge.length = 0.4
-	anim_player.add_animation("dodge", dodge)
-
-	var block = Animation.new()
-	block.length = 0.3
-	anim_player.add_animation("block", block)
-
-	var die = Animation.new()
-	die.length = 1.0
-	anim_player.add_animation("die", die)
+	# Animation creation is simplified for now
+	# In Godot 4.5, animations are typically created in the editor
+	# This is a placeholder that can be expanded with real animations
+	pass
 
 func create_enemies() -> void:
 	spawn_enemy("Slime", Vector2(400, 550))
@@ -181,25 +154,10 @@ func spawn_enemy(enemy_type: String, pos: Vector2) -> void:
 		create_enemy_animations(anim)
 
 func create_enemy_animations(anim_player: AnimationPlayer) -> void:
-	var idle = Animation.new()
-	idle.length = 0.5
-	anim_player.add_animation("idle", idle)
-
-	var walk = Animation.new()
-	walk.length = 0.4
-	anim_player.add_animation("walk", walk)
-
-	var attack = Animation.new()
-	attack.length = 0.5
-	anim_player.add_animation("attack", attack)
-
-	var hurt = Animation.new()
-	hurt.length = 0.2
-	anim_player.add_animation("hurt", hurt)
-
-	var die = Animation.new()
-	die.length = 1.0
-	anim_player.add_animation("die", die)
+	# Animation creation is simplified for now
+	# In Godot 4.5, animations are typically created in the editor
+	# This is a placeholder that can be expanded with real animations
+	pass
 
 func create_hud() -> void:
 	var hud_layer = CanvasLayer.new()

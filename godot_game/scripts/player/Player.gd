@@ -138,21 +138,25 @@ func update_animation() -> void:
 	if not anim_player:
 		return
 
+	var anim_name = ""
 	match current_state:
 		State.IDLE:
-			anim_player.play("idle")
+			anim_name = "idle"
 		State.RUNNING:
-			anim_player.play("run")
+			anim_name = "run"
 		State.JUMPING:
-			anim_player.play("jump")
+			anim_name = "jump"
 		State.ATTACKING:
-			anim_player.play("attack_light")
+			anim_name = "attack_light"
 		State.HEAVY_ATTACKING:
-			anim_player.play("attack_heavy")
+			anim_name = "attack_heavy"
 		State.BLOCKING:
-			anim_player.play("block")
+			anim_name = "block"
 		State.DODGING:
-			anim_player.play("dodge")
+			anim_name = "dodge"
+
+	if anim_name and anim_player.has_animation(anim_name):
+		anim_player.play(anim_name)
 
 func take_damage(damage: float) -> void:
 	health -= damage
