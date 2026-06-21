@@ -1,0 +1,39 @@
+# Godot-specific ignores
+.godot/
+*.translation
+export_presets.cfg
+.mono/
+mono_crash.*.json
+
+# Misc files
+*.swp
+*~
+.DS_Store
+.vscode/
+.idea/
+*.iml
+
+# Build/compiled files
+*.o
+*.a
+*.so
+*.pyc
+*.class
+
+# User-specific files
+.user
+.project
+.cproject
+.settings/
+
+# Godot editor cache
+.godot/editor_layout.cfg
+.godot/script_cache.gd
+
+# Save files
+user://
+*.save
+
+# Backups
+*.bak
+*backup*

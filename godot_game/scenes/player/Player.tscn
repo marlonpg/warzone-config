@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0vvvy3u6wumq"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("Player.gd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1, 2)
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = RectangleShape2D.new()
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
