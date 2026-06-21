@@ -36,10 +36,11 @@ func create_ground() -> void:
 	collision.shape = shape
 	ground.add_child(collision)
 
-	var sprite = Sprite2D.new()
-	sprite.modulate = Color.GRAY
-	sprite.scale = Vector2(200, 2.5)
-	ground.add_child(sprite)
+	var rect = ColorRect.new()
+	rect.color = Color.GRAY
+	rect.size = Vector2(4000, 50)
+	rect.position = Vector2(-2000, -25)
+	ground.add_child(rect)
 
 	ground.position = Vector2(640, 650)
 	add_child(ground)
@@ -51,10 +52,11 @@ func create_ground() -> void:
 	p1_collision.shape = p1_shape
 	platform1.add_child(p1_collision)
 
-	var p1_sprite = Sprite2D.new()
-	p1_sprite.modulate = Color.GRAY
-	p1_sprite.scale = Vector2(15, 1)
-	platform1.add_child(p1_sprite)
+	var p1_rect = ColorRect.new()
+	p1_rect.color = Color.GRAY
+	p1_rect.size = Vector2(300, 20)
+	p1_rect.position = Vector2(-150, -10)
+	platform1.add_child(p1_rect)
 
 	platform1.position = Vector2(300, 500)
 	add_child(platform1)
@@ -66,10 +68,11 @@ func create_ground() -> void:
 	p2_collision.shape = p2_shape
 	platform2.add_child(p2_collision)
 
-	var p2_sprite = Sprite2D.new()
-	p2_sprite.modulate = Color.GRAY
-	p2_sprite.scale = Vector2(15, 1)
-	platform2.add_child(p2_sprite)
+	var p2_rect = ColorRect.new()
+	p2_rect.color = Color.GRAY
+	p2_rect.size = Vector2(300, 20)
+	p2_rect.position = Vector2(-150, -10)
+	platform2.add_child(p2_rect)
 
 	platform2.position = Vector2(950, 400)
 	add_child(platform2)
@@ -86,11 +89,11 @@ func create_player() -> void:
 	collision.position = Vector2(0, -10)
 	player.add_child(collision)
 
-	var sprite = Sprite2D.new()
-	sprite.modulate = Color.BLACK
-	sprite.scale = Vector2(1, 2)
-	sprite.offset = Vector2(0, -10)
-	player.add_child(sprite)
+	var rect = ColorRect.new()
+	rect.color = Color.BLACK
+	rect.size = Vector2(20, 40)
+	rect.position = Vector2(-10, -20)
+	player.add_child(rect)
 
 	var anim = AnimationPlayer.new()
 	player.add_child(anim)
@@ -143,10 +146,11 @@ func spawn_enemy(enemy_type: String, pos: Vector2) -> void:
 		collision.shape = shape
 		enemy.add_child(collision)
 
-		var sprite = Sprite2D.new()
-		sprite.modulate = Color.RED
-		sprite.scale = Vector2(1, 1.5)
-		enemy.add_child(sprite)
+		var rect = ColorRect.new()
+		rect.color = Color.RED
+		rect.size = Vector2(30, 30)
+		rect.position = Vector2(-15, -15)
+		enemy.add_child(rect)
 
 		var anim = AnimationPlayer.new()
 		enemy.add_child(anim)
