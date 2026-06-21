@@ -84,7 +84,8 @@ player_jump={
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/vsync_mode=1
-window/stretch/mode="fit"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 
@@ -94,4 +95,4 @@ window/stretch/mode="fit"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=1
