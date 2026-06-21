@@ -215,7 +215,9 @@ func _on_light_attack() -> void:
 	var attack_area = Area2D.new()
 	var shape = CircleShape2D.new()
 	shape.radius = 30
-	attack_area.add_child(shape)
+	var collision = CollisionShape2D.new()
+	collision.shape = shape
+	attack_area.add_child(collision)
 	attack_area.position = global_position + (Vector2.RIGHT if facing_right else Vector2.LEFT) * 40
 	get_parent().add_child(attack_area)
 
@@ -241,7 +243,9 @@ func _on_heavy_attack() -> void:
 	var attack_area = Area2D.new()
 	var shape = CircleShape2D.new()
 	shape.radius = 50
-	attack_area.add_child(shape)
+	var collision = CollisionShape2D.new()
+	collision.shape = shape
+	attack_area.add_child(collision)
 	attack_area.position = global_position + (Vector2.RIGHT if facing_right else Vector2.LEFT) * 50
 	get_parent().add_child(attack_area)
 
