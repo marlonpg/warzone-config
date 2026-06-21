@@ -139,20 +139,24 @@ func create_enemies() -> void:
 	spawn_enemy("Goblin", Vector2(1500, 550))
 
 func spawn_enemy(enemy_type: String, pos: Vector2) -> void:
-	var enemy: Enemy = null
+	var enemy: Enemy = Enemy.new()
+
 	match enemy_type:
 		"Slime":
-			enemy = Slime.new()
 			enemy.health = 15.0
 			enemy.attack_damage = 3.0
+			enemy.experience_reward = 5
+			enemy.gold_reward = 2
 		"Rat":
-			enemy = Rat.new()
 			enemy.health = 20.0
 			enemy.attack_damage = 4.0
+			enemy.experience_reward = 8
+			enemy.gold_reward = 3
 		"Goblin":
-			enemy = Goblin.new()
 			enemy.health = 25.0
 			enemy.attack_damage = 5.0
+			enemy.experience_reward = 12
+			enemy.gold_reward = 5
 
 	if enemy:
 		enemy.position = pos

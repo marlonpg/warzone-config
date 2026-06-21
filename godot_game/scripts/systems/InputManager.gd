@@ -46,7 +46,7 @@ func _input(event: InputEvent) -> void:
 					heavy_attack.emit()
 				KEY_CTRL:
 					dodge.emit()
-				KEY_CONTROL:
+				KEY_ALT:
 					block.emit()
 	elif event is InputEventJoypadButton:
 		if event.pressed:
@@ -59,9 +59,9 @@ func _input(event: InputEvent) -> void:
 					light_attack.emit()
 				JOY_BUTTON_Y:
 					heavy_attack.emit()
-				JOY_BUTTON_LB:
+				4:  # LB Button
 					block.emit()
-				JOY_BUTTON_RB:
+				5:  # RB Button
 					light_attack.emit()
 				JOY_BUTTON_START:
 					sprinting = !sprinting
